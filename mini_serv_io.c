@@ -64,7 +64,7 @@ t_client clients[1024];
 // memset(clients, -1, sizeof(clients));
 fd_set mem_s, wr_s, rd_s;
 int maxfd, id, s_sock;
-char    mes[1000000], buf[1000000];
+char    mes[4096 * 42], buf[4096 * 42];
 
 void ft_send_all(int id_not)
 {
@@ -81,7 +81,7 @@ void ft_send_msg(int id_not)
     int i = 0;
     int j = 0;
     int len = strlen(buf);
-    char    temp[1000000] = {0};
+    char    temp[4096*42] = {0};
     while(i < len)
     {
         temp[j++] = buf[i];
@@ -113,6 +113,7 @@ int main(int ac, char **av) {
     if ((s_sock = socket(AF_INET, SOCK_STREAM, 0)) < 0 || bind(s_sock, (struct sockaddr *)&servaddr, sizeof(servaddr)) < 0 || listen(s_sock, 128) < 0)
     {
         write(2, "Fatal error\n", sizeof("Fatal error\n"));
+        exit(1);
     }
     maxfd = s_sock;
     FD_ZERO(&mem_s);
@@ -128,8 +129,8 @@ int main(int ac, char **av) {
             while (clients[i].fd > 0 && i < 1024)
                 i++;
             struct sockaddr_in clientaddr;
-            socklen_t len;
-            if ((clients[i].fd = accept(s_sock,(struct sockaddr *)&clientaddr, &len)) < 0)
+            int len = sizeof(clientaddr);
+            if ((clients[i].fd = accept(s_sock,(struct sockaddr *)&clientaddr, (socklen_t *)&len)) < 0)
                 continue;
             FD_SET(clients[i].fd, &mem_s);
             clients[i].id = id++;
@@ -144,10 +145,10 @@ int main(int ac, char **av) {
                 continue;
             int rec = 1;
             bzero(buf, sizeof(buf));
-            while (rec == 1)
+            while (rec > 0)
             {
-                rec = recv(clients[i].fd, buf + strlen(buf), 1, 0);
-                if (buf[strlen(buf) - 1] == '\n')
+                rec = recv(clients[i].fd, buf + strlen(buf), 4096*16, 0);
+                if (strstr(buf, "\n"))
                     break;
             }
             if (rec == 0)

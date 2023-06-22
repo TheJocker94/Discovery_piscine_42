@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon</title>
+</head>
+<body>
+    <script>
+        var a = 10;
+       function balloone() {
+            if (document.getElementById("ballone").style.backgroundColor == "red")
+                document.getElementById("ballone").style.backgroundColor = "green";
+            else if(document.getElementById("ballone").style.backgroundColor == "green")
+                document.getElementById("ballone").style.backgroundColor = "blue";
+            else
+                document.getElementById("ballone").style.backgroundColor = "red";
+            if (document.getElementById("ballone").style.width <= "420px")
+            {
+                a += 10;
+                document.getElementById("ballone").style.width = (200+a+"px");
+                document.getElementById("ballone").style.height = (200+a+"px");
+            }
+            else
+            {
+                a = 10;
+                document.getElementById("ballone").style.width = ("200px");
+                document.getElementById("ballone").style.height = ("200px");
+            }
+        }   
+        function notballoone() {
+            console.log("porcolo");
+                if (document.getElementById("ballone").style.backgroundColor == "red")
+                    document.getElementById("ballone").style.backgroundColor = "blue";
+                else if(document.getElementById("ballone").style.backgroundColor == "blue")
+                    document.getElementById("ballone").style.backgroundColor = "green";
+                else
+                    document.getElementById("ballone").style.backgroundColor = "red";
+                if (document.getElementById("ballone").style.width >= "200px")
+                {
+                    a -= 5;
+                    document.getElementById("ballone").style.width = (200+a+"px");
+                    document.getElementById("ballone").style.height = (200+a+"px");
+                }
+
+            }
+    </script>
+    <div onclick="balloone()" onmouseleave="notballoone()" id="ballone" style="height: 200px;width: 200px; background-color: red; border-radius: 50%; justify-content: center; margin: auto;" ></div>
+</body>
+</html>

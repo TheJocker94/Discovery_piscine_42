@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+table{
+    display: block;
+    box-shadow: 10px 10px 5px #dedede;
+    border: 0 ;
+    background-color: rgb(245, 240, 174);
+    width: 50%;
+    height: auto;
+    margin: auto;
+    margin-top: 50px;
+}
+
+/* .card{
+    display: block;
+    box-shadow: 10px 10px 5px #dedede;
+    border: 0 ;
+    background-color: rgb(245, 240, 174);
+    width: 50%;
+    height: auto;
+    margin: auto;
+    margin-top: 50px;
+} */
+
+.pic{
+    width: 100%;
+    margin: auto;
+    height: auto;
+}
+
+.social{
+    display: inline-block;
+    width: 20px;
+    height: auto;  
+}
+
+h3{
+    color: grey;
+    padding: auto ;
+}
+
+h4{
+    font-family: sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+button{
+    display: block;
+    margin: auto;
+    border: none;
+    background-color: black;
+    color: white;
+    width: 100%;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function myFunction(){
+            console.log('Please, use me..')
+            alert('Please, use me..')
+        }
+
+        // myFunction();
+
+        setInterval(function(){
+            myFunction()
+        }, 30000)
+        function porcodio(){
+            let res;
+            let a = parseInt(document.getElementById('1st').value);
+            let b = parseInt(document.getElementById('2nd').value);
+            var sign = document.getElementById('op').selectedOptions[0].value;
+            if (a < 0 || b < 0)
+            {
+                alert("Error :(");
+                console.log("Error :(");
+                return;
+            }
+            if (sign == '+')
+                res = a + b;
+            else if (sign == '-')
+                res = a - b;
+            else if (sign == '*')
+                res = a * b;
+            else if (sign == '/')
+            {
+                if (b == 0)
+                {
+                    alert("It’s over 9000!");
+                    console.log("It’s over 9000!");
+
+                return;
+                }
+                res = a / b;
+            }
+            else if (sign == '%')
+            {
+                if (b == 0)
+                {
+                    alert("It’s over 9000!");
+                    console.log("It’s over 9000!");
+                    return;
+                }
+                res = a % b;
+            }
+                alert(res);
+                console.log(res);
+
+        }
+    </script>
+</head>
+<body>
+    <input type="number" id="1st" name="1stn">
+    <select name="ops" id="op">
+      <option value="+" id="plus">+</option>
+      <option value="-" id="min">-</option>
+      <option value="/" id="div">/</option>
+      <option value="*" id="mul">*</option>
+      <option value="%" id="mod">%</option>
+    </select>
+    <input type="number" id="2nd" name="2ndn">
+    <button onclick="porcodio()">Click not</button>
+</body>
+</html>

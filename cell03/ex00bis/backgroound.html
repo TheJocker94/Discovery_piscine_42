@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="backgroound.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click random color</title>
+</head>
+<body>
+    <script>
+        function random_bg_color(){
+var randomColor = '#'+ ('000000' + Math.floor(Math.random()*16777215).toString(16)).slice(-6);
+
+document.body.style.background = randomColor;
+
+        }
+    </script>
+    <button onclick="random_bg_color()">Click me</button>
+</body>
+</html>
